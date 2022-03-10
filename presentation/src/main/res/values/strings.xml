@@ -1,0 +1,41 @@
+<resources>
+  <string name="app_name_debug" translatable="false">EasyCash-Task-Debug</string>
+  <string name="app_name" translatable="false">EasyCash-Task</string>
+
+  <!-- General Strings -->
+  <string name="hide">Hide</string>
+  <string name="connection_error">Connection Error</string>
+  <string name="no_internet">No internet connection please try again later</string>
+  <string name="retry">Retry</string>
+  <string name="cancel">Cancel</string>
+  <string name="some_error">Some error occurred, try again later</string>
+  <string name="list_no_result">Sorry, There are no results here!</string>
+
+  <!-- Tutorial -->
+  <string name="tutorial">Tutorial</string>
+  <string name="skip">Skip</string>
+  <string name="tutorial_1_title">Competitions</string>
+  <string name="tutorial_1_hint">You can view all available competitions</string>
+  <string name="tutorial_2_title">Teams</string>
+  <string name="tutorial_2_hint">View all available information for any team</string>
+  <string name="tutorial_3_title">Favorites</string>
+  <string name="tutorial_3_hint">Add Competitions &amp; Teams to your favorites list</string>
+
+  <!-- Log In -->
+  <string name="log_in">Log In</string>
+  <string name="email">Email Address</string>
+  <string name="password">Password</string>
+  <string name="not_have_account">Don\'t have an account?</string>
+  <string name="empty_email">Please enter your email address</string>
+  <string name="invalid_email">Please enter valid email address</string>
+  <string name="empty_password">Please enter your password</string>
+
+  <!-- Home -->
+  <string name="competitions">Competitions</string>
+  <string name="favorites">Favorites</string>
+
+  <!-- Competitions -->
+  <string name="season_start_date">Season Start Date</string>
+  <string name="season_end_date">Season End Date</string>
+
+</resources>

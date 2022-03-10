@@ -1,0 +1,38 @@
+<resources>
+  <!-- General Strings -->
+  <string name="hide">اخفاء</string>
+  <string name="connection_error">خطأ فى الاتصال</string>
+  <string name="no_internet">لا يوجد اتصال بالانترنت، برجاء المحاولة فى وقت لاحق</string>
+  <string name="retry">إعادة المحاولة</string>
+  <string name="cancel">إلغاء</string>
+  <string name="some_error">حدث خطأ ما، برجاء المحاولة فى وقت لاحق</string>
+  <string name="list_no_result">عفواً، لا يوجد بيانات</string>
+
+  <!-- Tutorial -->
+  <string name="tutorial">شرح التطبيق</string>
+  <string name="skip">تخطى</string>
+  <string name="tutorial_1_title">البطولات</string>
+  <string name="tutorial_1_hint">مشاهدة جميع البطولات المتاحة</string>
+  <string name="tutorial_2_title">الفرق</string>
+  <string name="tutorial_2_hint">يمكنك مشاهدة تفاصي اى فريق تفضل</string>
+  <string name="tutorial_3_title">المفضلات</string>
+  <string name="tutorial_3_hint">يمكنك اضافة البطولات و الفرق الى المفضلات</string>
+
+  <!-- Log In -->
+  <string name="log_in">تسجيل الدخول</string>
+  <string name="email">البريد الالكترونى</string>
+  <string name="password">كلمة المرور</string>
+  <string name="not_have_account">ليس لديك حساب؟</string>
+  <string name="empty_email">برجاء ادخال البريد الإلكترونى الخاص بك</string>
+  <string name="invalid_email">برجاء ادخال بريد إلكترونى صحيح</string>
+  <string name="empty_password">برجاء ادخال كلمة المرور</string>
+
+  <!-- Home -->
+  <string name="competitions">البطولات</string>
+  <string name="favorites">المفضلات</string>
+
+  <!-- Competitions -->
+  <string name="season_start_date">بدايه الموسم</string>
+  <string name="season_end_date">نهايه الموسم</string>
+
+</resources>
