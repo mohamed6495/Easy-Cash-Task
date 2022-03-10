@@ -10,6 +10,7 @@ import com.mina_mikhail.base_mvvm.domain.competitions.use_case.GetCompetitionFro
 import com.mina_mikhail.base_mvvm.domain.competitions.use_case.GetCompetitionsUseCase
 import com.mina_mikhail.base_mvvm.domain.competitions.use_case.GetTeamDetailsUseCase
 import com.mina_mikhail.base_mvvm.domain.competitions.use_case.GetTeamFromLocalUseCase
+import com.mina_mikhail.base_mvvm.domain.favorites.use_case.GetTeamsFromLocalUseCase
 import com.mina_mikhail.base_mvvm.domain.general.repository.GeneralRepository
 import com.mina_mikhail.base_mvvm.domain.general.use_case.CheckFirstTimeUseCase
 import com.mina_mikhail.base_mvvm.domain.general.use_case.GeneralUseCases
@@ -94,4 +95,11 @@ class UseCaseModule {
   fun provideGetCompetitionFromLocalUseCase(
     competitionsRepository: CompetitionsRepository
   ): GetCompetitionFromLocalUseCase = GetCompetitionFromLocalUseCase(competitionsRepository)
+
+  /* FAVOURITES */
+  @Provides
+  @Singleton
+  fun provideGetTeamsFromLocalUseCase(
+    competitionsRepository: CompetitionsRepository
+  ): GetTeamsFromLocalUseCase = GetTeamsFromLocalUseCase(competitionsRepository)
 }

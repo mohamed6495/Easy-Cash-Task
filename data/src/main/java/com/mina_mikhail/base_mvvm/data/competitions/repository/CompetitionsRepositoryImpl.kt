@@ -30,8 +30,8 @@ class CompetitionsRepositoryImpl @Inject constructor(
   suspend fun getTeamDetails(teamID: Int) = remoteDataSource.getTeamDetails(teamID)
 
   override
-  suspend fun getTeamsFromLocal(): Flow<List<Team>> {
-    return localDataSource.getTeamsFromLocal().map { it.mapToUiModelList() }
+  suspend fun getTeamsFromLocal(): List<Team> {
+    return localDataSource.getTeamsFromLocal().mapToUiModelList()
   }
 
   override

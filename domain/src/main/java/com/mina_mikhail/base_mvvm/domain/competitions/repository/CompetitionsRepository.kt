@@ -15,7 +15,7 @@ interface CompetitionsRepository {
 
   suspend fun getTeamDetails(teamID: Int): Resource<Team>
 
-  suspend fun getTeamsFromLocal(): Flow<List<Team>>
+  suspend fun getTeamsFromLocal(): List<Team>
 
   suspend fun getTeamById(teamID: Int): Team?
 

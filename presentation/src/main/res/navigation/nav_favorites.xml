@@ -5,9 +5,27 @@
     android:id="@+id/nav_favorites"
     app:startDestination="@id/favorites_fragment">
 
+  <include app:graph="@navigation/nav_team_details" />
+
   <fragment
       android:id="@+id/favorites_fragment"
       android:name="com.mina_mikhail.base_mvvm.presentation.favorites.FavoritesFragment"
-      tools:layout="@layout/fragment_favorites" />
+      tools:layout="@layout/fragment_favorites" >
+
+    <action
+      android:id="@+id/action_open_team_details"
+      app:destination="@id/nav_team_details"
+      app:enterAnim="@anim/anim_slide_in_right"
+      app:exitAnim="@anim/anim_slide_out_left"
+      app:popEnterAnim="@anim/anim_slide_in_left"
+      app:popExitAnim="@anim/anim_slide_out_right">
+
+      <argument
+        android:name="teamID"
+        app:argType="integer" />
+
+    </action>
+
+  </fragment>
 
 </navigation>

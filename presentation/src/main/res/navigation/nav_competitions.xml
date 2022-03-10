@@ -5,6 +5,8 @@
   android:id="@+id/nav_competitions"
   app:startDestination="@id/competitions_fragment">
 
+  <include app:graph="@navigation/nav_team_details" />
+
   <fragment
     android:id="@+id/competitions_fragment"
     android:name="com.mina_mikhail.base_mvvm.presentation.competitions.CompetitionsFragment"
@@ -16,7 +18,7 @@
       app:enterAnim="@anim/anim_slide_in_right"
       app:exitAnim="@anim/anim_slide_out_left"
       app:popEnterAnim="@anim/anim_slide_in_left"
-      app:popExitAnim="@anim/anim_slide_out_right"/>
+      app:popExitAnim="@anim/anim_slide_out_right" />
 
   </fragment>
 
@@ -31,22 +33,17 @@
 
     <action
       android:id="@+id/action_open_team_details"
-      app:destination="@id/team_details_fragment"
+      app:destination="@id/nav_team_details"
       app:enterAnim="@anim/anim_slide_in_right"
       app:exitAnim="@anim/anim_slide_out_left"
       app:popEnterAnim="@anim/anim_slide_in_left"
-      app:popExitAnim="@anim/anim_slide_out_right"/>
+      app:popExitAnim="@anim/anim_slide_out_right">
 
-  </fragment>
+      <argument
+        android:name="teamID"
+        app:argType="integer" />
 
-  <fragment
-    android:id="@+id/team_details_fragment"
-    android:name="com.mina_mikhail.base_mvvm.presentation.competitions.competition_details.teams.team_details.TeamDetailsFragment"
-    tools:layout="@layout/fragment_team_details">
-
-    <argument
-      android:name="teamID"
-      app:argType="integer" />
+    </action>
 
   </fragment>
 

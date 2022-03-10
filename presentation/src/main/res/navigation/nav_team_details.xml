@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_team_details"
+    app:startDestination="@id/team_details_fragment">
+
+  <fragment
+    android:id="@+id/team_details_fragment"
+    android:name="com.mina_mikhail.base_mvvm.presentation.competitions.competition_details.teams.team_details.TeamDetailsFragment"
+    tools:layout="@layout/fragment_team_details">
+
+    <argument
+      android:name="teamID"
+      app:argType="integer" />
+
+  </fragment>
+
+</navigation>

@@ -16,7 +16,7 @@ data class Team(
     null,
     "",
     crestUrl,
-    0,
+    id,
     name,
     shortName,
     emptyList(),

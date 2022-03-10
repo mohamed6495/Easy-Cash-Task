@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 class CompetitionsLocalDataSource @Inject constructor(private val myDatabase: MyDatabase) {
 
-  fun getTeamsFromLocal(): Flow<List<TeamEntity>> =
+  fun getTeamsFromLocal(): List<TeamEntity> =
     myDatabase.getTeamsDao().getAll()
 
   fun getTeamById(teamID: Int): TeamEntity =

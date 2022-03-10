@@ -8,24 +8,17 @@
       />
   </data>
 
-  <LinearLayout
+  <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundGray"
-    android:orientation="vertical"
     >
 
-    <TextView
-      style="@style/TitleBoldFont"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:gravity="center"
-      android:text="@string/favorites"
-      android:textAllCaps="true"
-      android:textColor="@color/colorAccent"
-      android:textSize="@dimen/text_size20"
+    <include
+      android:id="@+id/list_general"
+      layout="@layout/list_general"
       />
 
-  </LinearLayout>
+  </FrameLayout>
 
 </layout>
