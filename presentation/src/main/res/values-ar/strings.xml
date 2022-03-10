@@ -37,5 +37,13 @@
 
   <!-- Competition Details -->
   <string name="competition_details">تفاصيل البطولة</string>
+  <string name="current_season">الموسم الحالى:</string>
+  <string name="area">المنطقة:</string>
+  <string name="plan">الخطة:</string>
+  <string name="seasons">المواسم</string>
+  <string name="teams">الفرق</string>
+
+  <!-- Team Details -->
+  <string name="team_details">تفاصيل الفريق</string>
 
 </resources>

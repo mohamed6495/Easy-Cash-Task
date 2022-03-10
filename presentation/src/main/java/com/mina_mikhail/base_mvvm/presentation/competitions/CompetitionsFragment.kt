@@ -64,7 +64,6 @@ class CompetitionsFragment : BaseFragment<FragmentCompetitionsBinding>() {
           }
           is Resource.Success -> {
             competitionsAdapter.submitList(it.value)
-
             viewModel.dataLoadingEvent.value = DataStatus.SHOW_DATA
           }
           is Resource.Failure -> {

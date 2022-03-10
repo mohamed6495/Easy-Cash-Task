@@ -3,13 +3,22 @@ package com.mina_mikhail.base_mvvm.presentation.competitions.competition_details
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
+import com.mina_mikhail.base_mvvm.domain.competitions.entity.model.CompetitionDetails
 import com.mina_mikhail.base_mvvm.domain.enums.DataStatus
 import com.mina_mikhail.base_mvvm.domain.utils.Resource
 import com.mina_mikhail.base_mvvm.presentation.R
 import com.mina_mikhail.base_mvvm.presentation.base.BaseFragment
+import com.mina_mikhail.base_mvvm.presentation.base.MyViewPagerAdapter
 import com.mina_mikhail.base_mvvm.presentation.base.extensions.backToPreviousScreen
 import com.mina_mikhail.base_mvvm.presentation.base.extensions.getMyString
 import com.mina_mikhail.base_mvvm.presentation.base.extensions.handleApiError
+import com.mina_mikhail.base_mvvm.presentation.base.extensions.newFragmentInstance
+import com.mina_mikhail.base_mvvm.presentation.base.extensions.show
+import com.mina_mikhail.base_mvvm.presentation.base.extensions.toJsonString
+import com.mina_mikhail.base_mvvm.presentation.competitions.competition_details.seasons.SeasonsFragment
+import com.mina_mikhail.base_mvvm.presentation.competitions.competition_details.teams.TeamsFragment
 import com.mina_mikhail.base_mvvm.presentation.databinding.FragmentCompetitionDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -20,6 +29,9 @@ class CompetitionDetailsFragment : BaseFragment<FragmentCompetitionDetailsBindin
   private val viewModel: CompetitionDetailsViewModel by viewModels()
 
   private var competitionID: Int = 0
+
+  private lateinit var seasonsFragment: SeasonsFragment
+  private lateinit var teamsFragment: TeamsFragment
 
   override
   fun getLayoutId() = R.layout.fragment_competition_details
@@ -47,6 +59,9 @@ class CompetitionDetailsFragment : BaseFragment<FragmentCompetitionDetailsBindin
   private fun setUpToolbar() {
     binding.includedToolbar.toolbarTitle.text = getMyString(R.string.competition_details)
     binding.includedToolbar.backIv.setOnClickListener { backToPreviousScreen() }
+
+    binding.includedToolbar.ivAction.show()
+    binding.includedToolbar.ivAction.setOnClickListener { viewModel.addRemoveCompetitionToFavorites(competitionID) }
   }
 
   private fun getCompetitionDetails() {
@@ -62,8 +77,7 @@ class CompetitionDetailsFragment : BaseFragment<FragmentCompetitionDetailsBindin
             viewModel.dataLoadingEvent.value = DataStatus.LOADING
           }
           is Resource.Success -> {
-            //    competitionsAdapter.submitList(it.value)
-
+            setCompetitionDetails(it.value)
             viewModel.dataLoadingEvent.value = DataStatus.SHOW_DATA
           }
           is Resource.Failure -> {
@@ -76,5 +90,45 @@ class CompetitionDetailsFragment : BaseFragment<FragmentCompetitionDetailsBindin
         }
       }
     }
+  }
+
+  private fun setCompetitionDetails(competitionDetails: CompetitionDetails) {
+    binding.competition = competitionDetails.competition
+
+    setUpFragments(competitionDetails)
+
+    setUpViewPager()
+
+    setUpTabLayout()
+  }
+
+  private fun setUpFragments(competitionDetails: CompetitionDetails) {
+    seasonsFragment = newFragmentInstance(
+      SeasonsFragment.SEASONS
+        to competitionDetails.competition.seasons.toJsonString()
+    )
+
+    teamsFragment = newFragmentInstance(
+      TeamsFragment.TEAMS
+        to competitionDetails.teams.toJsonString()
+    )
+  }
+
+  private fun setUpViewPager() {
+    val adapter = MyViewPagerAdapter(this, arrayListOf(seasonsFragment, teamsFragment))
+    binding.viewPager.adapter = adapter
+    binding.viewPager.isSaveEnabled = false
+  }
+
+  private fun setUpTabLayout() {
+    binding.tabLayout.tabGravity = TabLayout.GRAVITY_FILL
+
+    TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
+      tab.text = if (position == 0) {
+        getMyString(R.string.seasons)
+      } else {
+        getMyString(R.string.teams)
+      }
+    }.attach()
   }
 }

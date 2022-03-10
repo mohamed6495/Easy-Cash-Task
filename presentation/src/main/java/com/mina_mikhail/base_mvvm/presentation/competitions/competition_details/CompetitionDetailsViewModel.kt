@@ -1,7 +1,7 @@
 package com.mina_mikhail.base_mvvm.presentation.competitions.competition_details
 
 import androidx.lifecycle.viewModelScope
-import com.mina_mikhail.base_mvvm.domain.competitions.entity.model.Competition
+import com.mina_mikhail.base_mvvm.domain.competitions.entity.model.CompetitionDetails
 import com.mina_mikhail.base_mvvm.domain.competitions.use_case.GetCompetitionDetailsUseCase
 import com.mina_mikhail.base_mvvm.domain.utils.Resource
 import com.mina_mikhail.base_mvvm.presentation.base.BaseViewModel
@@ -16,7 +16,7 @@ class CompetitionDetailsViewModel @Inject constructor(
   private val getCompetitionDetailsUseCase: GetCompetitionDetailsUseCase
 ) : BaseViewModel() {
 
-  private val _competitionDetailsResponse = MutableStateFlow<Resource<Competition>>(Resource.Default)
+  private val _competitionDetailsResponse = MutableStateFlow<Resource<CompetitionDetails>>(Resource.Default)
   val competitionDetailsResponse = _competitionDetailsResponse
 
   fun getCompetitionDetails(competitionID: Int) {
@@ -25,5 +25,8 @@ class CompetitionDetailsViewModel @Inject constructor(
         _competitionDetailsResponse.value = result
       }
       .launchIn(viewModelScope)
+  }
+
+  fun addRemoveCompetitionToFavorites(competitionID: Int) {
   }
 }

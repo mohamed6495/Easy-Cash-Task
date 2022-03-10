@@ -29,6 +29,25 @@
       android:name="competitionID"
       app:argType="integer" />
 
+    <action
+      android:id="@+id/action_open_team_details"
+      app:destination="@id/team_details_fragment"
+      app:enterAnim="@anim/anim_slide_in_right"
+      app:exitAnim="@anim/anim_slide_out_left"
+      app:popEnterAnim="@anim/anim_slide_in_left"
+      app:popExitAnim="@anim/anim_slide_out_right"/>
+
+  </fragment>
+
+  <fragment
+    android:id="@+id/team_details_fragment"
+    android:name="com.mina_mikhail.base_mvvm.presentation.competitions.competition_details.teams.team_details.TeamDetailsFragment"
+    tools:layout="@layout/fragment_team_details">
+
+    <argument
+      android:name="team"
+      app:argType="string" />
+
   </fragment>
 
 </navigation>

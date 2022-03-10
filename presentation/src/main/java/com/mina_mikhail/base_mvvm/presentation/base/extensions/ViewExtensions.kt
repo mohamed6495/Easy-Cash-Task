@@ -100,6 +100,7 @@ fun ImageView.loadImage(imageUrl: String?, progressBar: ProgressBar?) {
       .data(imageUrl)
       .crossfade(true)
       .crossfade(400)
+      .size(100, 100)
       .placeholder(R.color.backgroundGray)
       .error(R.drawable.bg_no_image)
       .target(

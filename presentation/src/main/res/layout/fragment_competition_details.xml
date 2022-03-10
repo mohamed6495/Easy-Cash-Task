@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  >
 
   <data>
     <variable
       name="viewModel"
       type="com.mina_mikhail.base_mvvm.presentation.competitions.competition_details.CompetitionDetailsViewModel"
+      />
+
+    <variable
+      name="competition"
+      type="com.mina_mikhail.base_mvvm.domain.competitions.entity.model.Competition"
       />
   </data>
 
@@ -24,6 +32,168 @@
       android:id="@+id/content_general"
       layout="@layout/content_general"
       />
+
+    <androidx.core.widget.NestedScrollView
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1"
+      android:fillViewport="true"
+      android:scrollbars="none"
+      >
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_padding"
+        >
+
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:maxLines="1"
+          android:text="@{competition.code}"
+          android:textAlignment="viewStart"
+          android:textColor="@color/colorPrimaryDark"
+          android:textSize="@dimen/text_size12"
+          app:goneUnless="@{competition.code != null}"
+          tools:text="Code"
+          />
+
+        <TextView
+          style="@style/TextMediumFont"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="@dimen/dimen10"
+          android:maxLines="2"
+          android:text="@{competition.name}"
+          android:textAlignment="viewStart"
+          android:textColor="@color/colorAccent"
+          tools:text="Competition Name"
+          />
+
+        <TextView
+          style="@style/TextMediumFont"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/current_season"
+          android:textAlignment="viewStart"
+          android:textColor="@color/colorAccent"
+          android:textSize="@dimen/text_size13"
+          />
+
+        <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@{@string/season_start_date + ` : ` + competition.currentSeason.startDate}"
+          android:textColor="@color/black"
+          tools:text="Season Start Date : 03-07-2022"
+          />
+
+        <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="@dimen/dimen10"
+          android:text="@{@string/season_end_date + ` : ` + competition.currentSeason.endDate}"
+          android:textColor="@color/black"
+          tools:text="Season End Date : 20-10-2022"
+          />
+
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:baselineAligned="false"
+          android:gravity="center_vertical"
+          android:orientation="horizontal"
+          >
+
+          <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            >
+
+            <TextView
+              style="@style/TextMediumFont"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="@string/area"
+              android:textAlignment="viewStart"
+              android:textColor="@color/colorAccent"
+              android:textSize="@dimen/text_size13"
+              />
+
+            <TextView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="@{competition.area.name}"
+              android:textColor="@color/black"
+              tools:text="Cairo"
+              />
+
+          </LinearLayout>
+
+          <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            >
+
+            <TextView
+              style="@style/TextMediumFont"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="@string/plan"
+              android:textAlignment="viewStart"
+              android:textColor="@color/colorAccent"
+              android:textSize="@dimen/text_size13"
+              />
+
+            <TextView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="@{competition.area.name}"
+              android:textColor="@color/black"
+              tools:text="TIER ONE"
+              />
+
+          </LinearLayout>
+
+        </LinearLayout>
+
+        <com.google.android.material.tabs.TabLayout
+          android:id="@+id/tab_layout"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dimen10"
+          android:background="@color/transparent"
+          app:tabGravity="fill"
+          app:tabIndicatorColor="@color/colorAccent"
+          app:tabIndicatorHeight="@dimen/dimen2"
+          app:tabMaxWidth="0dp"
+          app:tabMode="fixed"
+          app:tabSelectedTextColor="@color/colorAccent"
+          app:tabTextAppearance="@style/MyCustomTextAppearance"
+          app:tabTextColor="@color/gray"
+          />
+
+        <View
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/dimen1"
+          android:background="@color/gray"
+          />
+
+        <androidx.viewpager2.widget.ViewPager2
+          android:id="@+id/view_pager"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          />
+
+      </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
   </LinearLayout>
 

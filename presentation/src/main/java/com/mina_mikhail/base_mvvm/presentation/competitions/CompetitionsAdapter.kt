@@ -12,7 +12,7 @@ import com.mina_mikhail.base_mvvm.presentation.databinding.ItemCompetitionBindin
 
 class CompetitionsAdapter(
   private var itemClick: ((item: Competition) -> Unit)
-) : ListAdapter<Competition, CompetitionsAdapter.SearchCategoriesViewHolder>(DIFF_CALLBACK) {
+) : ListAdapter<Competition, CompetitionsAdapter.CompetitionsViewHolder>(DIFF_CALLBACK) {
 
   companion object {
     private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Competition>() {
@@ -30,7 +30,7 @@ class CompetitionsAdapter(
   fun onCreateViewHolder(
     parent: ViewGroup,
     viewType: Int
-  ): SearchCategoriesViewHolder {
+  ): CompetitionsViewHolder {
     val binding: ItemCompetitionBinding =
       DataBindingUtil.inflate(
         LayoutInflater.from(parent.context),
@@ -39,15 +39,15 @@ class CompetitionsAdapter(
         false
       )
 
-    return SearchCategoriesViewHolder(binding)
+    return CompetitionsViewHolder(binding)
   }
 
   override
-  fun onBindViewHolder(holder: SearchCategoriesViewHolder, position: Int) {
+  fun onBindViewHolder(holder: CompetitionsViewHolder, position: Int) {
     holder.bind(getItem(position))
   }
 
-  inner class SearchCategoriesViewHolder(private val itemBinding: ItemCompetitionBinding) :
+  inner class CompetitionsViewHolder(private val itemBinding: ItemCompetitionBinding) :
     RecyclerView.ViewHolder(itemBinding.root) {
 
     private lateinit var currentItem: Competition

@@ -39,6 +39,7 @@
         android:maxLines="1"
         android:text="@{item.code}"
         android:textAlignment="viewStart"
+        android:visibility="gone"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/text_size12"
         app:goneUnless="@{item.code != null}"

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  >
+
+  <data>
+    <variable
+      name="item"
+      type="com.mina_mikhail.base_mvvm.domain.competitions.entity.model.Season"
+      />
+  </data>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dimen7"
+    android:background="@drawable/bg_rounded_white"
+    android:elevation="@dimen/dimen1"
+    android:orientation="vertical"
+    android:padding="@dimen/dimen12"
+    >
+
+    <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@{@string/season_start_date + ` : ` + item.startDate}"
+      android:textColor="@color/black"
+      tools:text="Season Start Date : 03-07-2022"
+      />
+
+    <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@{@string/season_end_date + ` : ` + item.endDate}"
+      android:textColor="@color/black"
+      tools:text="Season End Date : 20-10-2022"
+      />
+
+  </LinearLayout>
+
+</layout>

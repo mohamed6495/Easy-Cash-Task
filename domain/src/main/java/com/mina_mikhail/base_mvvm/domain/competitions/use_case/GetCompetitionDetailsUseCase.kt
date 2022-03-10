@@ -1,6 +1,6 @@
 package com.mina_mikhail.base_mvvm.domain.competitions.use_case
 
-import com.mina_mikhail.base_mvvm.domain.competitions.entity.model.Competition
+import com.mina_mikhail.base_mvvm.domain.competitions.entity.model.CompetitionDetails
 import com.mina_mikhail.base_mvvm.domain.competitions.repository.CompetitionsRepository
 import com.mina_mikhail.base_mvvm.domain.utils.Resource
 import kotlinx.coroutines.Dispatchers
@@ -13,7 +13,7 @@ class GetCompetitionDetailsUseCase @Inject constructor(
   private val competitionsRepository: CompetitionsRepository
 ) {
 
-  operator fun invoke(competitionID: Int): Flow<Resource<Competition>> = flow {
+  operator fun invoke(competitionID: Int): Flow<Resource<CompetitionDetails>> = flow {
     emit(Resource.Loading)
 
     val result = competitionsRepository.getCompetitionDetails(competitionID)
