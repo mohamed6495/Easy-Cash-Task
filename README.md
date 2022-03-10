@@ -1,43 +1,6 @@
 <h1 align="center">
-Android Clean Architecture 
+Easy Cash Android Task
 </h1>
-
-
-<div align="center">
-<a name="open_source">
-  <img src="https://badges.frapsoft.com/os/v1/open-source.svg?v=102?style=for-the-badge">
-</a>
-<a name="code_factor" href="https://www.codefactor.io/repository/github/mina-mikhail/kotlin-base-mvvm">
-  <img src="https://www.codefactor.io/repository/github/mina-mikhail/kotlin-base-mvvm/badge?style=for-the-badge">
-</a>  
-<a name="platform">
-  <img src="https://img.shields.io/badge/Platform-Android-success?style=for-the-badge">
-</a>
-<a name="language">
-  <img src="https://img.shields.io/badge/Language-Kotlin---?style=for-the-badge">
-</a>
-<a name="stars">
-  <img src="https://img.shields.io/github/stars/Mina-Mikhail/Kotlin-Base-MVVM?style=for-the-badge"></a>
-<a name="forks">
-  <img src="https://img.shields.io/github/forks/Mina-Mikhail/Kotlin-Base-MVVM?logoColor=green&style=for-the-badge">
-</a>
-<a name="contributions">
-  <img src="https://img.shields.io/github/contributors/Mina-Mikhail/Kotlin-Base-MVVM?logoColor=green&style=for-the-badge">
-</a>
-<a name="last_commit">
-  <img src="https://img.shields.io/github/last-commit/Mina-Mikhail/Kotlin-Base-MVVM?style=for-the-badge">
-</a>
-<a name="issues">
-  <img src="https://img.shields.io/github/issues-raw/Mina-Mikhail/Kotlin-Base-MVVM?style=for-the-badge">
-</a>
-<a name="license">
-  <img src="https://img.shields.io/github/license/sadanandpai/javascript-code-challenges?style=for-the-badge">
-</a>
-<a name="linked_in" href="https://www.linkedin.com/in/minasamirgerges/">
-  <img src="https://img.shields.io/badge/Support-Recommed%2FEndorse%20me%20on%20Linkedin-yellow?style=for-the-badge&logo=linkedin" alt="Recommend me on LinkedIn"/>
-</a>
-</div>
-
 
 :point_right: Clean Architecture:
 -----------------
@@ -87,14 +50,15 @@ Android Clean Architecture
 :point_right: Project Structure:
 -----------------
 
-- Sample includes some basic features required in each project like :
+- Tasks contains the following screens :
   - Splash.
   - App Tutorial.
   - Login - (With Business Logic).
-  - Sign Up - (Blank Screens).
-  - Forgot Password -(Blanck Screens).
-  - Home Screen - (Contains 3 Tabs with 3 NavGraphs).
-
+  - Competitions.
+  - Competition Details.
+  - Teams.
+  - Favorites.
+  
 :point_right: Extra Modules:
 -----------------
 
@@ -103,6 +67,13 @@ Android Clean Architecture
   - ActionChooser - (A customized pop up with recyclerView of single selection).
   - PrettyPopUp (A customized pop up to display message to user with two actions (positive & negative buttons)).
   - ImagesSlider (An images slider supports auto scrolling for images from url and support GIF images).
+  
+:point_right: Apis:
+-----------------
+
+- I'm using www.football-data.org Apis, and i was created this postman file :
+  - https://www.getpostman.com/collections/74eb077bd0a9f0188c49
+
 
 :point_right: Code Style:
 -----------
@@ -123,55 +94,11 @@ Android Clean Architecture
 - Here are some useful Gradle commands for executing this example:
   - `./gradlew clean` - Deletes build directory.
 
-:point_right: TO DO:
------------
-
-- [X] Apply ktlint for checking code style.
-- [X] Use git hooks to automate code checking and styling before any new commit.
-- [X] Use Flow in Domain layer.
-- [X] Use StateFlow in Presentation layer.
-- [X] Use UseCases.
-- [X] Handle Different Build Variants.
-- [ ] Use Ktor as network client instead of Retrofit & OKHTTP.
-- [ ] Use Data Store instead of Shared Preferences.
-- [ ] Explore full MVI implementation.
-- [ ] Add some unit tests.
-
-:point_right: Contributing to Project:
------------
-
-- Just fork this repository and contribute back using pull requests.
-- Any contributions, large or small, major features, bug fixes, are welcomed and appreciated but will be thoroughly
-  reviewed .
-
-:point_right: Find this project useful ? :heart:
------------
-
-- Support it by clicking the :star: button on the upper right of this page. :v:
-
-:point_right: Stargazers: :star:
------------
-[![Stargazers repo roster for @sadanandpai/javascript-code-challenges](https://reporoster.com/stars/Mina-Mikhail/Kotlin-Base-MVVM)](https://github.com/Mina-Mikhail/Kotlin-Base-MVVM/stargazers)
-
-
-:point_right: Forkers: :hammer_and_pick:
------------
-[![Forkers repo roster for @sadanandpai/javascript-code-challenges](https://reporoster.com/forks/Mina-Mikhail/Kotlin-Base-MVVM)](https://github.com/Mina-Mikhail/Kotlin-Base-MVVM/network/members)
-
-
-:point_right: Donation:
------------
-If this project help you reduce time to develop, you can give me a cup of coffee :)
-
-<a href="https://www.buymeacoffee.com/mina.mikhail" target="_blank"><img src="https://bmc-cdn.nyc3.digitaloceanspaces.com/BMC-button-images/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
-
-
-
 :warning: License:
 --------
 
 ```
-   Copyright (C) 2021 MINA MIKHAIL PRIVATE LIMITED
+   Copyright (C) 2022 MINA MIKHAIL PRIVATE LIMITED
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
