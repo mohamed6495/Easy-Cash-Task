@@ -45,5 +45,8 @@
 
   <!-- Team Details -->
   <string name="team_details">تفاصيل الفريق</string>
+  <string name="address">العنوان:</string>
+  <string name="club_colors">الوان النادى:</string>
+  <string name="team_players">اللاعبين:</string>
 
 </resources>

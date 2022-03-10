@@ -119,13 +119,13 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:text="@string/area"
-              android:textAlignment="viewStart"
               android:textColor="@color/colorAccent"
               android:textSize="@dimen/text_size13"
               />
 
             <TextView
               android:layout_width="match_parent"
+              android:textAlignment="viewStart"
               android:layout_height="wrap_content"
               android:text="@{competition.area.name}"
               android:textColor="@color/black"
@@ -146,7 +146,6 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:text="@string/plan"
-              android:textAlignment="viewStart"
               android:textColor="@color/colorAccent"
               android:textSize="@dimen/text_size13"
               />
@@ -154,6 +153,7 @@
             <TextView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
+              android:textAlignment="viewStart"
               android:text="@{competition.area.name}"
               android:textColor="@color/black"
               tools:text="TIER ONE"

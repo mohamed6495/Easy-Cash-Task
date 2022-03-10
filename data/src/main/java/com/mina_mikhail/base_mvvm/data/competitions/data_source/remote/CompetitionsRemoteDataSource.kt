@@ -42,4 +42,8 @@ class CompetitionsRemoteDataSource @Inject constructor(private val apiService: C
       }
     }
   }
+
+  suspend fun getTeamDetails(teamID: Int) = safeApiCall {
+    apiService.getTeamDetails(teamID)
+  }
 }

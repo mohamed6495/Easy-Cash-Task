@@ -5,6 +5,7 @@ import com.mina_mikhail.base_mvvm.domain.auth.use_case.LogInUseCase
 import com.mina_mikhail.base_mvvm.domain.competitions.repository.CompetitionsRepository
 import com.mina_mikhail.base_mvvm.domain.competitions.use_case.GetCompetitionDetailsUseCase
 import com.mina_mikhail.base_mvvm.domain.competitions.use_case.GetCompetitionsUseCase
+import com.mina_mikhail.base_mvvm.domain.competitions.use_case.GetTeamDetailsUseCase
 import com.mina_mikhail.base_mvvm.domain.general.repository.GeneralRepository
 import com.mina_mikhail.base_mvvm.domain.general.use_case.CheckFirstTimeUseCase
 import com.mina_mikhail.base_mvvm.domain.general.use_case.GeneralUseCases
@@ -59,4 +60,10 @@ class UseCaseModule {
   fun provideGetCompetitionDetailsUseCase(
     competitionsRepository: CompetitionsRepository
   ): GetCompetitionDetailsUseCase = GetCompetitionDetailsUseCase(competitionsRepository)
+
+  @Provides
+  @Singleton
+  fun provideGetTeamDetailsUseCase(
+    competitionsRepository: CompetitionsRepository
+  ): GetTeamDetailsUseCase = GetTeamDetailsUseCase(competitionsRepository)
 }

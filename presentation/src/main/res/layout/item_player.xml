@@ -1,37 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   >
 
   <data>
     <variable
       name="item"
-      type="com.mina_mikhail.base_mvvm.domain.competitions.entity.model.Team"
+      type="com.mina_mikhail.base_mvvm.domain.competitions.entity.model.Player"
       />
   </data>
 
   <LinearLayout
-    android:id="@+id/ll_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/dimen7"
-    android:background="@drawable/btn_white"
+    android:background="@drawable/bg_rounded_white"
     android:elevation="@dimen/dimen1"
     android:gravity="center_vertical"
     android:orientation="horizontal"
     android:padding="@dimen/dimen12"
     >
-
-    <ImageView
-      android:layout_width="@dimen/dimen70"
-      android:layout_height="@dimen/dimen70"
-      android:layout_marginEnd="@dimen/dimen10"
-      android:scaleType="centerCrop"
-      app:loadImage="@{item.crestUrl}"
-      tools:ignore="ContentDescription"
-      tools:src="@color/backgroundGray"
-      />
 
     <LinearLayout
       android:layout_width="0dp"
@@ -41,17 +29,6 @@
       >
 
       <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:maxLines="1"
-        android:text="@{item.shortName}"
-        android:textAlignment="viewStart"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="@dimen/text_size12"
-        tools:text="Short Name"
-        />
-
-      <TextView
         style="@style/TextMediumFont"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -59,10 +36,30 @@
         android:text="@{item.name}"
         android:textAlignment="viewStart"
         android:textColor="@color/colorAccent"
-        tools:text="Team Name"
+        tools:text="Player Name"
+        />
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:text="@{item.nationality}"
+        android:textAlignment="viewStart"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/text_size12"
+        tools:text="Nationality"
         />
 
     </LinearLayout>
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@{item.position}"
+      android:textAlignment="viewStart"
+      android:textColor="@color/colorPrimary"
+      tools:text="Position"
+      />
 
   </LinearLayout>
 

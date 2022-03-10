@@ -14,5 +14,6 @@ data class Team(
   val shortName: String,
   val tla: String,
   val venue: String,
-  val website: String
+  val website: String,
+  val squad: List<Player>
 )

@@ -1,6 +1,7 @@
 package com.mina_mikhail.base_mvvm.data.competitions.data_source.remote
 
 import com.mina_mikhail.base_mvvm.domain.competitions.entity.model.Competition
+import com.mina_mikhail.base_mvvm.domain.competitions.entity.model.Team
 import com.mina_mikhail.base_mvvm.domain.competitions.entity.response.CompetitionTeamsResponse
 import com.mina_mikhail.base_mvvm.domain.competitions.entity.response.CompetitionsResponse
 import retrofit2.http.GET
@@ -16,4 +17,7 @@ interface CompetitionsServices {
 
   @GET("competitions/{competitionID}/teams")
   suspend fun getCompetitionTeams(@Path("competitionID") competitionID: Int): CompetitionTeamsResponse
+
+  @GET("teams/{teamID}")
+  suspend fun getTeamDetails(@Path("teamID") teamID: Int): Team
 }

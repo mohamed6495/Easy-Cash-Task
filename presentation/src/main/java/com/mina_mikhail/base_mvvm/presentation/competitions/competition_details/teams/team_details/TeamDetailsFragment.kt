@@ -1,23 +1,30 @@
 package com.mina_mikhail.base_mvvm.presentation.competitions.competition_details.teams.team_details
 
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.mina_mikhail.base_mvvm.domain.competitions.entity.model.Team
+import com.mina_mikhail.base_mvvm.domain.enums.DataStatus
+import com.mina_mikhail.base_mvvm.domain.utils.Resource
 import com.mina_mikhail.base_mvvm.presentation.R
 import com.mina_mikhail.base_mvvm.presentation.base.BaseFragment
 import com.mina_mikhail.base_mvvm.presentation.base.extensions.backToPreviousScreen
 import com.mina_mikhail.base_mvvm.presentation.base.extensions.getMyString
+import com.mina_mikhail.base_mvvm.presentation.base.extensions.handleApiError
 import com.mina_mikhail.base_mvvm.presentation.base.extensions.show
-import com.mina_mikhail.base_mvvm.presentation.base.extensions.toJsonModel
 import com.mina_mikhail.base_mvvm.presentation.databinding.FragmentTeamDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
 class TeamDetailsFragment : BaseFragment<FragmentTeamDetailsBinding>() {
 
   private val viewModel: TeamDetailsViewModel by viewModels()
 
-  private lateinit var team: Team
+  private var teamID: Int = 0
+
+  private lateinit var playersAdapter: PlayersAdapter
 
   override
   fun getLayoutId() = R.layout.fragment_team_details
@@ -25,20 +32,23 @@ class TeamDetailsFragment : BaseFragment<FragmentTeamDetailsBinding>() {
   override
   fun setBindingVariables() {
     binding.viewModel = viewModel
+    binding.contentGeneral.baseViewModel = viewModel
   }
 
   override
   fun getFragmentArguments() {
     val args: TeamDetailsFragmentArgs by navArgs()
 
-    team = args.team.toJsonModel(Team::class.java)
+    teamID = args.teamID
   }
 
   override
   fun setUpViews() {
     setUpToolbar()
 
-    setTeamData()
+    setUpPlayersRecyclerView()
+
+    getTeamDetails()
   }
 
   private fun setUpToolbar() {
@@ -49,7 +59,46 @@ class TeamDetailsFragment : BaseFragment<FragmentTeamDetailsBinding>() {
     binding.includedToolbar.ivAction.setOnClickListener { viewModel.addRemoveTeamToFavorites() }
   }
 
-  private fun setTeamData() {
+  private fun setUpPlayersRecyclerView() {
+    playersAdapter = PlayersAdapter()
+    binding.recyclerView.apply {
+      setHasFixedSize(true)
+      layoutManager = LinearLayoutManager(requireContext())
+      adapter = playersAdapter
+    }
+  }
+
+  private fun getTeamDetails() {
+    viewModel.getTeamDetails(teamID)
+  }
+
+  override
+  fun setupObservers() {
+    lifecycleScope.launchWhenResumed {
+      viewModel.teamDetailsResponse.collect {
+        when (it) {
+          Resource.Loading -> {
+            viewModel.dataLoadingEvent.value = DataStatus.LOADING
+          }
+          is Resource.Success -> {
+            setTeamData(it.value)
+            viewModel.dataLoadingEvent.value = DataStatus.SHOW_DATA
+          }
+          is Resource.Failure -> {
+            handleApiError(
+              it,
+              noDataAction = { viewModel.dataLoadingEvent.value = DataStatus.NO_DATA },
+              noInternetAction = { viewModel.dataLoadingEvent.value = DataStatus.NO_INTERNET }
+            )
+          }
+        }
+      }
+    }
+  }
+
+  private fun setTeamData(team: Team) {
     binding.team = team
+
+    playersAdapter.submitList(team.squad)
   }
 }

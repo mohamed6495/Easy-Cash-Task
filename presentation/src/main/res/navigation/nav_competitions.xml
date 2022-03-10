@@ -45,8 +45,8 @@
     tools:layout="@layout/fragment_team_details">
 
     <argument
-      android:name="team"
-      app:argType="string" />
+      android:name="teamID"
+      app:argType="integer" />
 
   </fragment>
 

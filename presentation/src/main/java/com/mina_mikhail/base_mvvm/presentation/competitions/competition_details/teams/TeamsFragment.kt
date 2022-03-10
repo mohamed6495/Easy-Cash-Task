@@ -6,7 +6,6 @@ import com.mina_mikhail.base_mvvm.presentation.R
 import com.mina_mikhail.base_mvvm.presentation.base.BaseFragment
 import com.mina_mikhail.base_mvvm.presentation.base.extensions.navigateSafe
 import com.mina_mikhail.base_mvvm.presentation.base.extensions.toJsonList
-import com.mina_mikhail.base_mvvm.presentation.base.extensions.toJsonString
 import com.mina_mikhail.base_mvvm.presentation.competitions.competition_details.CompetitionDetailsFragmentDirections
 import com.mina_mikhail.base_mvvm.presentation.databinding.FragmentTeamsBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -48,6 +47,6 @@ class TeamsFragment : BaseFragment<FragmentTeamsBinding>() {
   }
 
   private fun onTeamClicked(team: Team) {
-    navigateSafe(CompetitionDetailsFragmentDirections.actionOpenTeamDetails(team.toJsonString()))
+    navigateSafe(CompetitionDetailsFragmentDirections.actionOpenTeamDetails(team.id))
   }
 }

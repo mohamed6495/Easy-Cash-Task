@@ -48,5 +48,8 @@
 
   <!-- Team Details -->
   <string name="team_details">Team Details</string>
+  <string name="address">Address:</string>
+  <string name="club_colors">Club Colors:</string>
+  <string name="team_players">Team Players:</string>
 
 </resources>
