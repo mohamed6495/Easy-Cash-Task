@@ -2,6 +2,7 @@ package com.mina_mikhail.base_mvvm.core.di.module
 
 import com.mina_mikhail.base_mvvm.data.auth.data_source.remote.AuthRemoteDataSource
 import com.mina_mikhail.base_mvvm.data.auth.repository.AuthRepositoryImpl
+import com.mina_mikhail.base_mvvm.data.competitions.data_source.local.CompetitionsLocalDataSource
 import com.mina_mikhail.base_mvvm.data.competitions.data_source.remote.CompetitionsRemoteDataSource
 import com.mina_mikhail.base_mvvm.data.competitions.repository.CompetitionsRepositoryImpl
 import com.mina_mikhail.base_mvvm.data.favorites.data_source.local.FavoritesLocalDataSource
@@ -43,6 +44,7 @@ class RepositoryModule {
   @Provides
   @Singleton
   fun provideHomeRepository(
-    remoteDataSource: CompetitionsRemoteDataSource
-  ): CompetitionsRepository = CompetitionsRepositoryImpl(remoteDataSource)
+    remoteDataSource: CompetitionsRemoteDataSource,
+    localDataSource: CompetitionsLocalDataSource
+  ): CompetitionsRepository = CompetitionsRepositoryImpl(remoteDataSource, localDataSource)
 }

@@ -29,6 +29,11 @@ object Libraries {
   const val interceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.interceptor}"
   const val chuckLogging = "com.readystatesoftware.chuck:library:${Versions.chuckLogging}"
 
+  // Room
+  const val room = "androidx.room:room-runtime:${Versions.room}"
+  const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
+  const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
+
   // UI
   const val materialDesign = "com.google.android.material:material:${Versions.materialDesign}"
   const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.androidNavigation}"

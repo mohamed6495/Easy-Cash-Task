@@ -5,10 +5,10 @@ import androidx.core.content.ContextCompat
 import codes.mina_mikhail.app_tutorial.AppTutorial
 import codes.mina_mikhail.app_tutorial.AppTutorialHelper
 import com.mina_mikhail.base_mvvm.presentation.R
-import com.mina_mikhail.base_mvvm.presentation.auth.AuthActivity
 import com.mina_mikhail.base_mvvm.presentation.base.BaseActivity
 import com.mina_mikhail.base_mvvm.presentation.base.extensions.openActivityAndClearStack
 import com.mina_mikhail.base_mvvm.presentation.databinding.ActivityTutorialBinding
+import com.mina_mikhail.base_mvvm.presentation.home.HomeActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -75,6 +75,6 @@ class TutorialActivity : BaseActivity<ActivityTutorialBinding>() {
   }
 
   private fun openLogIn() {
-    openActivityAndClearStack(AuthActivity::class.java)
+    openActivityAndClearStack(HomeActivity::class.java)
   }
 }

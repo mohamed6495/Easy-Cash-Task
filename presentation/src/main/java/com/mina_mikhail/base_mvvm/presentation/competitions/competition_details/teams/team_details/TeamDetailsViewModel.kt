@@ -2,6 +2,7 @@ package com.mina_mikhail.base_mvvm.presentation.competitions.competition_details
 
 import androidx.lifecycle.viewModelScope
 import com.mina_mikhail.base_mvvm.domain.competitions.entity.model.Team
+import com.mina_mikhail.base_mvvm.domain.competitions.use_case.AddRemoveTeamToFavoritesUseCase
 import com.mina_mikhail.base_mvvm.domain.competitions.use_case.GetTeamDetailsUseCase
 import com.mina_mikhail.base_mvvm.domain.utils.Resource
 import com.mina_mikhail.base_mvvm.presentation.base.BaseViewModel
@@ -13,11 +14,17 @@ import javax.inject.Inject
 
 @HiltViewModel
 class TeamDetailsViewModel @Inject constructor(
-  private val getTeamDetailsUseCase: GetTeamDetailsUseCase
+  private val getTeamDetailsUseCase: GetTeamDetailsUseCase,
+  private val addRemoveTeamToFavoritesUseCase: AddRemoveTeamToFavoritesUseCase
 ) : BaseViewModel() {
+
+  lateinit var team: Team
 
   private val _teamDetailsResponse = MutableStateFlow<Resource<Team>>(Resource.Default)
   val teamDetailsResponse = _teamDetailsResponse
+
+  private val _addRemoveTeamToFavorites = MutableStateFlow<Boolean?>(null)
+  val addRemoveTeamToFavorites = _addRemoveTeamToFavorites
 
   fun getTeamDetails(teamID: Int) {
     getTeamDetailsUseCase(teamID)
@@ -28,5 +35,10 @@ class TeamDetailsViewModel @Inject constructor(
   }
 
   fun addRemoveTeamToFavorites() {
+    addRemoveTeamToFavoritesUseCase(team)
+      .onEach { result ->
+        _addRemoveTeamToFavorites.value = result
+      }
+      .launchIn(viewModelScope)
   }
 }

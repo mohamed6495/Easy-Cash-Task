@@ -23,6 +23,9 @@ object Versions {
   const val interceptor = "4.8.1"
   const val chuckLogging = "1.1.0"
 
+  // Room
+  const val room = "2.3.0"
+
   // UI
   const val materialDesign = "1.4.0"
   const val androidNavigation = "2.3.5"

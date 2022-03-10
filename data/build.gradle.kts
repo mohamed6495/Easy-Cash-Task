@@ -25,6 +25,11 @@ dependencies {
   implementation(Libraries.coroutinesCore)
   implementation(Libraries.coroutinesAndroid)
 
+  // Room
+  implementation(Libraries.room)
+  kapt(Libraries.roomCompiler)
+  implementation(Libraries.roomKtx)
+
   // Networking
   implementation(Libraries.retrofit)
   implementation(Libraries.gson)

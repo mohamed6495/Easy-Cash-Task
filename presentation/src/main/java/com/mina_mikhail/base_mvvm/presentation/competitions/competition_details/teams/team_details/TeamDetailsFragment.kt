@@ -10,6 +10,7 @@ import com.mina_mikhail.base_mvvm.domain.utils.Resource
 import com.mina_mikhail.base_mvvm.presentation.R
 import com.mina_mikhail.base_mvvm.presentation.base.BaseFragment
 import com.mina_mikhail.base_mvvm.presentation.base.extensions.backToPreviousScreen
+import com.mina_mikhail.base_mvvm.presentation.base.extensions.getMyDrawable
 import com.mina_mikhail.base_mvvm.presentation.base.extensions.getMyString
 import com.mina_mikhail.base_mvvm.presentation.base.extensions.handleApiError
 import com.mina_mikhail.base_mvvm.presentation.base.extensions.show
@@ -56,6 +57,7 @@ class TeamDetailsFragment : BaseFragment<FragmentTeamDetailsBinding>() {
     binding.includedToolbar.backIv.setOnClickListener { backToPreviousScreen() }
 
     binding.includedToolbar.ivAction.show()
+    binding.includedToolbar.ivAction.setImageDrawable(getMyDrawable(R.drawable.ic_favorites))
     binding.includedToolbar.ivAction.setOnClickListener { viewModel.addRemoveTeamToFavorites() }
   }
 
@@ -94,10 +96,24 @@ class TeamDetailsFragment : BaseFragment<FragmentTeamDetailsBinding>() {
         }
       }
     }
+
+    lifecycleScope.launchWhenResumed {
+      viewModel.addRemoveTeamToFavorites.collect {
+        it?.let { isFavourite ->
+          viewModel.team.isFavourite = isFavourite
+          if (isFavourite) {
+            binding.includedToolbar.ivAction.setImageDrawable(getMyDrawable(R.drawable.ic_favorites_selected))
+          } else {
+            binding.includedToolbar.ivAction.setImageDrawable(getMyDrawable(R.drawable.ic_favorites))
+          }
+        }
+      }
+    }
   }
 
   private fun setTeamData(team: Team) {
     binding.team = team
+    viewModel.team = team
 
     playersAdapter.submitList(team.squad)
   }

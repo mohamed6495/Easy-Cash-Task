@@ -81,6 +81,11 @@ dependencies {
   implementation(Libraries.interceptor)
   implementation(Libraries.chuckLogging)
 
+  // Room
+  implementation(Libraries.room)
+  kapt(Libraries.roomCompiler)
+  implementation(Libraries.roomKtx)
+
   // Utils
   implementation(Libraries.playServices)
   implementation(Libraries.localization)

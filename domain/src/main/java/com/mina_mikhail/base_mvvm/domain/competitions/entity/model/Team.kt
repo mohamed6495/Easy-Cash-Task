@@ -2,18 +2,24 @@ package com.mina_mikhail.base_mvvm.domain.competitions.entity.model
 
 data class Team(
   val address: String,
-  val area: Area,
+  val area: Area?,
   val clubColors: String,
   val crestUrl: String,
-  val email: String,
-  val founded: Int,
   val id: Int,
-  val lastUpdated: String,
   val name: String,
-  val phone: String,
   val shortName: String,
-  val tla: String,
-  val venue: String,
-  val website: String,
-  val squad: List<Player>
-)
+  val squad: List<Player>,
+  var isFavourite: Boolean
+) {
+  constructor(id: Int, crestUrl: String, name: String, shortName: String) : this(
+    "",
+    null,
+    "",
+    crestUrl,
+    0,
+    name,
+    shortName,
+    emptyList(),
+    false
+  )
+}

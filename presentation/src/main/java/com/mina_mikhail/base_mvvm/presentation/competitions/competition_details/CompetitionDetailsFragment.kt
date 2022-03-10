@@ -12,6 +12,7 @@ import com.mina_mikhail.base_mvvm.presentation.R
 import com.mina_mikhail.base_mvvm.presentation.base.BaseFragment
 import com.mina_mikhail.base_mvvm.presentation.base.MyViewPagerAdapter
 import com.mina_mikhail.base_mvvm.presentation.base.extensions.backToPreviousScreen
+import com.mina_mikhail.base_mvvm.presentation.base.extensions.getMyDrawable
 import com.mina_mikhail.base_mvvm.presentation.base.extensions.getMyString
 import com.mina_mikhail.base_mvvm.presentation.base.extensions.handleApiError
 import com.mina_mikhail.base_mvvm.presentation.base.extensions.newFragmentInstance
@@ -61,7 +62,8 @@ class CompetitionDetailsFragment : BaseFragment<FragmentCompetitionDetailsBindin
     binding.includedToolbar.backIv.setOnClickListener { backToPreviousScreen() }
 
     binding.includedToolbar.ivAction.show()
-    binding.includedToolbar.ivAction.setOnClickListener { viewModel.addRemoveCompetitionToFavorites(competitionID) }
+    binding.includedToolbar.ivAction.setImageDrawable(getMyDrawable(R.drawable.ic_favorites))
+    binding.includedToolbar.ivAction.setOnClickListener { viewModel.addRemoveCompetitionToFavorites() }
   }
 
   private fun getCompetitionDetails() {
@@ -90,10 +92,24 @@ class CompetitionDetailsFragment : BaseFragment<FragmentCompetitionDetailsBindin
         }
       }
     }
+
+    lifecycleScope.launchWhenResumed {
+      viewModel.addRemoveCompetitionToFavorites.collect {
+        it?.let { isFavourite ->
+          viewModel.competition.isFavourite = isFavourite
+          if (isFavourite) {
+            binding.includedToolbar.ivAction.setImageDrawable(getMyDrawable(R.drawable.ic_favorites_selected))
+          } else {
+            binding.includedToolbar.ivAction.setImageDrawable(getMyDrawable(R.drawable.ic_favorites))
+          }
+        }
+      }
+    }
   }
 
   private fun setCompetitionDetails(competitionDetails: CompetitionDetails) {
     binding.competition = competitionDetails.competition
+    viewModel.competition = competitionDetails.competition
 
     setUpFragments(competitionDetails)
 

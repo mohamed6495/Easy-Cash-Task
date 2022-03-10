@@ -3,6 +3,8 @@ package com.mina_mikhail.base_mvvm.core.di.module
 import com.mina_mikhail.base_mvvm.domain.auth.repository.AuthRepository
 import com.mina_mikhail.base_mvvm.domain.auth.use_case.LogInUseCase
 import com.mina_mikhail.base_mvvm.domain.competitions.repository.CompetitionsRepository
+import com.mina_mikhail.base_mvvm.domain.competitions.use_case.AddRemoveCompetitionToFavoritesUseCase
+import com.mina_mikhail.base_mvvm.domain.competitions.use_case.AddRemoveTeamToFavoritesUseCase
 import com.mina_mikhail.base_mvvm.domain.competitions.use_case.GetCompetitionDetailsUseCase
 import com.mina_mikhail.base_mvvm.domain.competitions.use_case.GetCompetitionsUseCase
 import com.mina_mikhail.base_mvvm.domain.competitions.use_case.GetTeamDetailsUseCase
@@ -66,4 +68,16 @@ class UseCaseModule {
   fun provideGetTeamDetailsUseCase(
     competitionsRepository: CompetitionsRepository
   ): GetTeamDetailsUseCase = GetTeamDetailsUseCase(competitionsRepository)
+
+  @Provides
+  @Singleton
+  fun provideAddRemoveTeamToFavoritesUseCase(
+    competitionsRepository: CompetitionsRepository
+  ): AddRemoveTeamToFavoritesUseCase = AddRemoveTeamToFavoritesUseCase(competitionsRepository)
+
+  @Provides
+  @Singleton
+  fun provideAddRemoveCompetitionToFavoritesUseCase(
+    competitionsRepository: CompetitionsRepository
+  ): AddRemoveCompetitionToFavoritesUseCase = AddRemoveCompetitionToFavoritesUseCase(competitionsRepository)
 }
