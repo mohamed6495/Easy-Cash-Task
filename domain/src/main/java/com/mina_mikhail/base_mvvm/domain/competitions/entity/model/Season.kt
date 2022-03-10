@@ -1,6 +1,6 @@
 package com.mina_mikhail.base_mvvm.domain.competitions.entity.model
 
-data class CurrentSeason(
+data class Season(
   val currentMatchday: Int,
   val endDate: String,
   val id: Int,

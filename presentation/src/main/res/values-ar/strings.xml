@@ -35,4 +35,7 @@
   <string name="season_start_date">بدايه الموسم</string>
   <string name="season_end_date">نهايه الموسم</string>
 
+  <!-- Competition Details -->
+  <string name="competition_details">تفاصيل البطولة</string>
+
 </resources>

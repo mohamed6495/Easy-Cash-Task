@@ -9,4 +9,7 @@ class CompetitionsRepositoryImpl @Inject constructor(private val remoteDataSourc
 
   override
   suspend fun getCompetitions() = remoteDataSource.getCompetitions()
+
+  override
+  suspend fun getCompetitionDetails(competitionID: Int) = remoteDataSource.getCompetitionDetails(competitionID)
 }

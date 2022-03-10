@@ -18,19 +18,23 @@ open class BaseRemoteDataSource @Inject constructor() {
     try {
       val apiResponse = apiCall.invoke()
 
-      when ((apiResponse as BaseResponse).count) {
-        0 -> {
-          return Resource.Failure(FailureStatus.EMPTY)
+      if ((apiResponse is BaseResponse)) {
+        return when (apiResponse.count) {
+          0 -> {
+            Resource.Failure(FailureStatus.EMPTY)
+          }
+          else -> {
+            Resource.Success(apiResponse)
+          }
         }
-//        null -> {
-//          return if ((apiResponse.result as List<*>).isNotEmpty()) {
-//            Resource.Success(apiResponse)
-//          } else {
-//            Resource.Failure(FailureStatus.EMPTY)
-//          }
-//        }
-        else -> {
-          return Resource.Success(apiResponse)
+      } else {
+        return when (apiResponse) {
+          null -> {
+            Resource.Failure(FailureStatus.EMPTY)
+          }
+          else -> {
+            Resource.Success(apiResponse)
+          }
         }
       }
     } catch (throwable: Throwable) {
@@ -50,7 +54,7 @@ open class BaseRemoteDataSource @Inject constructor() {
                 ErrorResponse::class.java
               )
 
-              return Resource.Failure(FailureStatus.API_FAIL, throwable.code(), errorResponse.detail)
+              return Resource.Failure(FailureStatus.API_FAIL, throwable.code())
             }
             else -> {
               return if (throwable.response()?.errorBody()!!.charStream().readText().isNullOrEmpty()) {
@@ -62,7 +66,7 @@ open class BaseRemoteDataSource @Inject constructor() {
                     ErrorResponse::class.java
                   )
 
-                  Resource.Failure(FailureStatus.API_FAIL, throwable.code(), errorResponse.detail)
+                  Resource.Failure(FailureStatus.API_FAIL, throwable.code())
                 } catch (ex: JsonSyntaxException) {
                   Resource.Failure(FailureStatus.API_FAIL, throwable.code())
                 }

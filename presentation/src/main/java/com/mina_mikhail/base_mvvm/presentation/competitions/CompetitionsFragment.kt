@@ -9,6 +9,7 @@ import com.mina_mikhail.base_mvvm.domain.utils.Resource
 import com.mina_mikhail.base_mvvm.presentation.R
 import com.mina_mikhail.base_mvvm.presentation.base.BaseFragment
 import com.mina_mikhail.base_mvvm.presentation.base.extensions.handleApiError
+import com.mina_mikhail.base_mvvm.presentation.base.extensions.navigateSafe
 import com.mina_mikhail.base_mvvm.presentation.databinding.FragmentCompetitionsBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -46,6 +47,7 @@ class CompetitionsFragment : BaseFragment<FragmentCompetitionsBinding>() {
   }
 
   private fun onCompetitionClicked(competition: Competition) {
+    navigateSafe(CompetitionsFragmentDirections.actionOpenCompetitionDetails(competition.id))
   }
 
   private fun getCompetitions() {

@@ -38,4 +38,7 @@
   <string name="season_start_date">Season Start Date</string>
   <string name="season_end_date">Season End Date</string>
 
+  <!-- Competition Details -->
+  <string name="competition_details">Competition Details</string>
+
 </resources>
