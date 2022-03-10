@@ -11,7 +11,7 @@ class CompetitionsLocalDataSource @Inject constructor(private val myDatabase: My
   fun getTeamsFromLocal(): Flow<List<TeamEntity>> =
     myDatabase.getTeamsDao().getAll()
 
-  fun getTeamById(teamID: Int): Flow<TeamEntity> =
+  fun getTeamById(teamID: Int): TeamEntity =
     myDatabase.getTeamsDao().getTeamById(teamID)
 
   suspend fun saveTeamToLocal(team: TeamEntity) =
@@ -23,7 +23,7 @@ class CompetitionsLocalDataSource @Inject constructor(private val myDatabase: My
   fun getCompetitionsFromLocal(): Flow<List<CompetitionEntity>> =
     myDatabase.getCompetitionsDao().getAll()
 
-  fun getCompetitionById(competitionID: Int): Flow<CompetitionEntity> =
+  fun getCompetitionById(competitionID: Int): CompetitionEntity =
     myDatabase.getCompetitionsDao().getCompetitionById(competitionID)
 
   suspend fun saveCompetitionToLocal(competition: CompetitionEntity) =

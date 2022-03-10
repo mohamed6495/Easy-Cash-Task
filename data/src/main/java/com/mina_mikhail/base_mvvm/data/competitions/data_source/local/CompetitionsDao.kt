@@ -15,7 +15,7 @@ interface CompetitionsDao {
   fun getAll(): Flow<List<CompetitionEntity>>
 
   @Query("SELECT * FROM competitions WHERE id = :competitionID")
-  fun getCompetitionById(competitionID: Int): Flow<CompetitionEntity>
+  fun getCompetitionById(competitionID: Int): CompetitionEntity
 
   @Insert(onConflict = OnConflictStrategy.REPLACE)
   suspend fun insert(competition: CompetitionEntity)

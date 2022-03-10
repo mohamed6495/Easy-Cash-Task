@@ -2,6 +2,7 @@ package com.mina_mikhail.base_mvvm.data.competitions.mapper
 
 import com.mina_mikhail.base_mvvm.data.competitions.entity.CompetitionEntity
 import com.mina_mikhail.base_mvvm.domain.competitions.entity.model.Competition
+import com.mina_mikhail.base_mvvm.domain.competitions.entity.model.Team
 
 object CompetitionsMapper {
 
@@ -15,8 +16,12 @@ object CompetitionsMapper {
     return competitions
   }
 
-  fun CompetitionEntity.mapToUiModel(): Competition {
-    return Competition(id, code, currentSeason, name)
+  fun CompetitionEntity?.mapToUiModel(): Competition? {
+    return if (this == null) {
+      null
+    } else {
+      Competition(id, code, currentSeason, name)
+    }
   }
 
   fun Competition.mapToEntity(): CompetitionEntity {

@@ -15,7 +15,7 @@ interface TeamsDao {
   fun getAll(): Flow<List<TeamEntity>>
 
   @Query("SELECT * FROM teams WHERE id = :teamID")
-  fun getTeamById(teamID: Int): Flow<TeamEntity>
+  fun getTeamById(teamID: Int): TeamEntity
 
   @Insert(onConflict = OnConflictStrategy.REPLACE)
   suspend fun insert(team: TeamEntity)

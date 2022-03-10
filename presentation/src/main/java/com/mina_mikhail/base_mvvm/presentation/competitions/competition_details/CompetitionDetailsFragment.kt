@@ -62,7 +62,6 @@ class CompetitionDetailsFragment : BaseFragment<FragmentCompetitionDetailsBindin
     binding.includedToolbar.backIv.setOnClickListener { backToPreviousScreen() }
 
     binding.includedToolbar.ivAction.show()
-    binding.includedToolbar.ivAction.setImageDrawable(getMyDrawable(R.drawable.ic_favorites))
     binding.includedToolbar.ivAction.setOnClickListener { viewModel.addRemoveCompetitionToFavorites() }
   }
 
@@ -110,6 +109,19 @@ class CompetitionDetailsFragment : BaseFragment<FragmentCompetitionDetailsBindin
   private fun setCompetitionDetails(competitionDetails: CompetitionDetails) {
     binding.competition = competitionDetails.competition
     viewModel.competition = competitionDetails.competition
+
+    lifecycleScope.launchWhenResumed {
+      viewModel.localCompetition.collect {
+        if (it == null) {
+          viewModel.competition.isFavourite = false
+          binding.includedToolbar.ivAction.setImageDrawable(getMyDrawable(R.drawable.ic_favorites))
+        } else {
+          viewModel.competition.isFavourite = true
+          binding.includedToolbar.ivAction.setImageDrawable(getMyDrawable(R.drawable.ic_favorites_selected))
+        }
+      }
+    }
+    viewModel.getCompetitionFromLocal()
 
     setUpFragments(competitionDetails)
 

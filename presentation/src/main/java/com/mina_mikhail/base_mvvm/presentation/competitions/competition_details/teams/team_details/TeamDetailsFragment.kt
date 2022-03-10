@@ -57,7 +57,6 @@ class TeamDetailsFragment : BaseFragment<FragmentTeamDetailsBinding>() {
     binding.includedToolbar.backIv.setOnClickListener { backToPreviousScreen() }
 
     binding.includedToolbar.ivAction.show()
-    binding.includedToolbar.ivAction.setImageDrawable(getMyDrawable(R.drawable.ic_favorites))
     binding.includedToolbar.ivAction.setOnClickListener { viewModel.addRemoveTeamToFavorites() }
   }
 
@@ -114,6 +113,19 @@ class TeamDetailsFragment : BaseFragment<FragmentTeamDetailsBinding>() {
   private fun setTeamData(team: Team) {
     binding.team = team
     viewModel.team = team
+
+    lifecycleScope.launchWhenResumed {
+      viewModel.localTeam.collect {
+        if (it == null) {
+          viewModel.team.isFavourite = false
+          binding.includedToolbar.ivAction.setImageDrawable(getMyDrawable(R.drawable.ic_favorites))
+        } else {
+          viewModel.team.isFavourite = true
+          binding.includedToolbar.ivAction.setImageDrawable(getMyDrawable(R.drawable.ic_favorites_selected))
+        }
+      }
+    }
+    viewModel.getTeamFromLocal()
 
     playersAdapter.submitList(team.squad)
   }

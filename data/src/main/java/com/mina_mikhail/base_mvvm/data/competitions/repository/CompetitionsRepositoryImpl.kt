@@ -6,7 +6,7 @@ import com.mina_mikhail.base_mvvm.data.competitions.mapper.CompetitionsMapper.ma
 import com.mina_mikhail.base_mvvm.data.competitions.mapper.CompetitionsMapper.mapToUiModel
 import com.mina_mikhail.base_mvvm.data.competitions.mapper.CompetitionsMapper.mapToUiModelList
 import com.mina_mikhail.base_mvvm.data.competitions.mapper.TeamMapper.mapToEntity
-import com.mina_mikhail.base_mvvm.data.competitions.mapper.TeamMapper.mapToUiMode
+import com.mina_mikhail.base_mvvm.data.competitions.mapper.TeamMapper.mapToUiModel
 import com.mina_mikhail.base_mvvm.data.competitions.mapper.TeamMapper.mapToUiModelList
 import com.mina_mikhail.base_mvvm.domain.competitions.entity.model.Competition
 import com.mina_mikhail.base_mvvm.domain.competitions.entity.model.Team
@@ -35,8 +35,8 @@ class CompetitionsRepositoryImpl @Inject constructor(
   }
 
   override
-  suspend fun getTeamById(teamID: Int): Flow<Team?> {
-    return localDataSource.getTeamById(teamID).map { it.mapToUiMode() }
+  suspend fun getTeamById(teamID: Int): Team? {
+    return localDataSource.getTeamById(teamID).mapToUiModel()
   }
 
   override
@@ -51,8 +51,8 @@ class CompetitionsRepositoryImpl @Inject constructor(
   }
 
   override
-  suspend fun getCompetitionById(competitionID: Int): Flow<Competition> {
-    return localDataSource.getCompetitionById(competitionID).map { it.mapToUiModel() }
+  suspend fun getCompetitionById(competitionID: Int): Competition? {
+    return localDataSource.getCompetitionById(competitionID).mapToUiModel()
   }
 
   override

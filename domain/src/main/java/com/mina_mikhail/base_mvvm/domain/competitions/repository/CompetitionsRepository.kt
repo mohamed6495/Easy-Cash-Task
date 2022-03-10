@@ -17,7 +17,7 @@ interface CompetitionsRepository {
 
   suspend fun getTeamsFromLocal(): Flow<List<Team>>
 
-  suspend fun getTeamById(teamID: Int): Flow<Team?>
+  suspend fun getTeamById(teamID: Int): Team?
 
   suspend fun saveTeamToLocal(team: Team)
 
@@ -25,7 +25,7 @@ interface CompetitionsRepository {
 
   suspend fun getCompetitionsFromLocal(): Flow<List<Competition>>
 
-  suspend fun getCompetitionById(competitionID: Int): Flow<Competition>
+  suspend fun getCompetitionById(competitionID: Int): Competition?
 
   suspend fun saveCompetitionToLocal(competition: Competition)
 

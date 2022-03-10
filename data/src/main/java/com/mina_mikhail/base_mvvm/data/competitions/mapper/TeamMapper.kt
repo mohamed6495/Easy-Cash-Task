@@ -15,11 +15,11 @@ object TeamMapper {
     return teams
   }
 
-  fun TeamEntity?.mapToUiMode(): Team? {
-    if (this == null) {
-      return null
+  fun TeamEntity?.mapToUiModel(): Team? {
+    return if (this == null) {
+      null
     } else {
-      return Team(id, crestUrl, name, shortName)
+      Team(id, crestUrl, name, shortName)
     }
   }
 
