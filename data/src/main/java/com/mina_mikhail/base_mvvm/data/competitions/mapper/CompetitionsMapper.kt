@@ -2,7 +2,6 @@ package com.mina_mikhail.base_mvvm.data.competitions.mapper
 
 import com.mina_mikhail.base_mvvm.data.competitions.entity.CompetitionEntity
 import com.mina_mikhail.base_mvvm.domain.competitions.entity.model.Competition
-import com.mina_mikhail.base_mvvm.domain.competitions.entity.model.Team
 
 object CompetitionsMapper {
 
